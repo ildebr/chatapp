@@ -1,0 +1,106 @@
+body{
+    
+}
+
+@import 'general';
+
+$borderr: 20px;
+
+.form__container{
+    height: 100vh;
+    width: 100%;
+    background-color: $background-main;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+
+    &__header{
+        height: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        text-align: left;
+        padding: 1rem;
+
+        p{
+            font-weight: 600;
+        }
+    }
+
+    .userform{
+        height: 65%;
+        width: 100%;
+        background-color: white;
+        align-self: flex-end;
+        border-top-right-radius: 25px;
+        border-top-left-radius: 25px;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 1rem;
+    }
+
+    label{
+        width: 100%;
+    }
+
+    input{
+        width: 100%;
+        display: block;
+
+        &[type=text]{
+            background-color: $background-second;
+            border: none;
+            border-radius: $borderr;
+            padding: .5rem 1rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        &[type=submit]{
+            background-color: black;
+            color: white;
+            border-radius: $borderr;
+            padding: .75rem 1rem;
+
+        }
+    }
+
+    select{
+        width: 100%;
+        padding: 0.5rem;
+        margin-bottom: 1rem;
+        border-radius: $borderr;
+        background: $background-second;
+        color: black;
+
+    }
+}
+
+@media (min-width:900px) {
+    .form__container{
+        display: grid;
+        grid-auto-columns: 1fr 1fr;
+        
+        &__header, .userform{
+            grid-row: 1;
+            padding: 4rem;
+        }
+
+        .userform{
+            height: 100%;
+            border-radius: 0;
+
+        }
+
+        &__header{
+            height: 100%;
+        }
+
+        h1{
+            font-size: 4rem;
+        }
+    }
+}

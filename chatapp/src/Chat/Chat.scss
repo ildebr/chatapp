@@ -38,14 +38,23 @@
         z-index: 10;
 
         .hamburger__bars{
-            display: none;
+                display: inline-block;
+                max-width: 25px;
+                visibility: hidden;
+            
         }
 
         &__header{
             padding: 0 1rem;
-            background-color: #eaeaea;
-            display: flex;
+            position: fixed;
+            left: 0;
+            width: 100%;
+            z-index: 100;
+            height: 50px;
+            background: white;
             box-shadow: 0px 0px 3px #6f6f6f;
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
             button{
                 font-weight: 700;
             }
@@ -108,6 +117,7 @@
             justify-content: end;
             overflow: hidden;
             position: relative;
+            grid-row: 2;
 
             .hero{
                 overflow: hidden;
@@ -168,6 +178,7 @@
     .leave__chat{
         background: none;
         border: none;
+        text-align: left;
         &:hover{
             text-decoration: underline;
             cursor: pointer;
@@ -178,7 +189,8 @@
     .chat_bar{
         
         color: white;
-        z-index: 100;
+        z-index: 10;
+        padding-top: calc(50px + 1rem);
 
         h4{
             margin-bottom: 1rem;
@@ -247,7 +259,7 @@
 
         &__body{
             .chat__body__header{
-                display: flex;
+                display: grid;
                 justify-content: space-between;
                 cursor: pointer;
                 box-shadow: 0px 0px 3px #6f6f6f;
@@ -255,6 +267,8 @@
             .hamburger__bars{
                 display: inline-block;
                 max-width: 25px;
+                visibility: visible;
+                margin-left: auto;
             }
         }
 

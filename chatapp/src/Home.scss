@@ -177,32 +177,57 @@ $borderr: 5px;
         }
     }
 
+    
+}
+
+
+.logo-container{
+    position: absolute;
+    top: 2rem;
+    right: 2rem;
+    display: flex;
+    margin: 0 auto;
+    img,svg{
+        height: 25px;
+        width: 25px;
+
+        #svg-path{
+            fill: blue;
+
+            &:first-child{
+                fill: white;
+            }
+        }
+    }
+    p{
+        display: inline;
+        font-weight: 500;
+        margin-right: .5rem;
+        color: white;
+    }
+}
+
+.chat__body__header{
+    justify-content: space-between;
+    align-items: center;
+
     .logo-container{
-        position: absolute;
-        top: 2rem;
-        right: 2rem;
-        display: flex;
+        position: initial;
+        top: auto;
+        right: auto;
         img,svg{
-            height: 25px;
-            width: 25px;
-
             #svg-path{
-                fill: blue;
-
                 &:first-child{
-                    fill: white;
+                    fill: $background-main;
                 }
             }
         }
         p{
-            display: inline;
-            font-weight: 500;
-            margin-right: .5rem;
-            color: white;
+            color: $background-main;
+            display: none;
         }
     }
 }
-
 
 
 @media (min-width:900px) {

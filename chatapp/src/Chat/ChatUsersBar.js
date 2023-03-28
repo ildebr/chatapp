@@ -20,7 +20,7 @@ const ChatUsersBar = ({socket}) =>{
             
 
             <div>
-                <h2 className="close__user__bar" onClick={(e)=>{handleToggle(e)}}>&larr;</h2>
+                <h2 className="close__user__bar" onClick={(e)=>{handleToggle(e)}}>&rarr;</h2>
                 <h4>Usuarios activos</h4>
                 <div className="chat__users">
                     

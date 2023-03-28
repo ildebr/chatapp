@@ -12,7 +12,8 @@ const ChatInput = ({socket}) => {
         if(localStorage.getItem('user')){
             await socket.emit('message',{
                 text: message,
-                name: localStorage.getItem('user'),
+                user: localStorage.getItem('user'),
+                img: localStorage.getItem('img'),
                 id: Math.random()*1000,
                 socketid: socket.id
             })
@@ -20,7 +21,7 @@ const ChatInput = ({socket}) => {
 
         setMessage('');
     }
-        
+    
 
     return (
         <div className="chat__input">

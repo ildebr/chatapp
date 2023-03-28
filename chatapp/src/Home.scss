@@ -4,7 +4,7 @@ body{
 
 @import 'general';
 
-$borderr: 20px;
+$borderr: 5px;
 
 .form__container{
     height: 100vh;
@@ -13,6 +13,7 @@ $borderr: 20px;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    position: relative;
 
     &__header{
         height: 35%;
@@ -21,9 +22,34 @@ $borderr: 20px;
         justify-content: center;
         text-align: left;
         padding: 1rem;
+        color: white;
+        position: relative;
+        overflow: hidden;
 
         p{
             font-weight: 600;
+        }
+
+        .pattern{
+            position: absolute;
+            height: 25%;
+            width: 100%;
+            left: 0;
+            bottom: 0;
+
+            img{
+                width: 100%;
+                filter: invert(0.9);
+            }
+
+            .bg{
+                z-index: 10;
+                width: 100%;
+                height: 100%;
+                position: absolute;
+                background: transparent;
+                background: linear-gradient(#007aff, transparent);
+            }
         }
     }
 
@@ -42,8 +68,36 @@ $borderr: 20px;
         padding: 1rem;
     }
 
+    h2{
+        margin-bottom: 2rem;
+    }
+
     label{
         width: 100%;
+        position: relative;
+
+        .input-placeholder{
+            position: absolute;
+            bottom: 50%;
+            transform: translateY(50%);
+            left: 1rem;
+            transition: .3s ease;
+            color: rgb(182, 182, 182);
+            
+        }
+
+        input:focus + span, input.username__input:valid + span{
+            bottom: 100%;  
+            font-size: 85%;
+            font-weight: 700;
+        }
+
+        // input:not(:placeholder-shown) + span{
+        //     bottom: 100%;  
+        //     font-size: 85%;
+        //     font-weight: 700;
+        //     background-color: red;
+        // }
     }
 
     input{
@@ -51,19 +105,29 @@ $borderr: 20px;
         display: block;
 
         &[type=text]{
-            background-color: $background-second;
+            
             border: none;
-            border-radius: $borderr;
-            padding: .5rem 1rem;
+            // border-radius: $borderr;
+            
+            padding: 1rem 1rem;
             margin-top: 1rem;
-            margin-bottom: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid rgb(228, 228, 228);
+
+            &:focus{
+                outline-color: transparent;
+                background-color: #f5f5f5;
+            }
         }
 
         &[type=submit]{
-            background-color: black;
+            background-color: $background-main;
+            border: none;
             color: white;
             border-radius: $borderr;
-            padding: .75rem 1rem;
+            padding: 1rem 1rem;
+            cursor: pointer;
+            font-weight: 700;
 
         }
     }
@@ -77,7 +141,69 @@ $borderr: 20px;
         color: black;
 
     }
+
+    .radio-buttons{
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 3rem;
+        margin-bottom: 2rem;
+        
+        *{
+            width: 100%;
+        }
+
+        label{
+            border: 2px solid rgb(65, 65, 65);
+            border-radius: 5px;
+            position: relative;
+            cursor: pointer;
+            aspect-ratio: 1/1;
+            max-width: 66px;
+            margin: 0 auto;
+            padding: 0.35rem;
+            input{
+                position: absolute;
+                top: 2px;
+                left: 2px;
+                width: fit-content;
+
+            }
+
+
+        }
+
+        label:has(input:checked){
+            border-color: $background-main;
+        }
+    }
+
+    .logo-container{
+        position: absolute;
+        top: 2rem;
+        right: 2rem;
+        display: flex;
+        img,svg{
+            height: 25px;
+            width: 25px;
+
+            #svg-path{
+                fill: blue;
+
+                &:first-child{
+                    fill: white;
+                }
+            }
+        }
+        p{
+            display: inline;
+            font-weight: 500;
+            margin-right: .5rem;
+            color: white;
+        }
+    }
 }
+
+
 
 @media (min-width:900px) {
     .form__container{
@@ -102,5 +228,23 @@ $borderr: 20px;
         h1{
             font-size: 4rem;
         }
+
+        .logo-container{
+
+            img,svg{
+                #svg-path{
+                    fill: $background-main;
+    
+                    &:first-child{
+                        fill: blue;
+                    }
+                }
+            }
+            p{
+                color: blue;
+            }
+        }
     }
+
+    
 }

@@ -20,6 +20,7 @@ socketC.on('connection', (socket) => {
 
     socket.on('message', (data) => {
       console.log('message',data);
+      console.log(connectedUSers)
       socketC.emit('messageResponse', data);
     });
 
@@ -29,6 +30,11 @@ socketC.on('connection', (socket) => {
       socketC.emit('newUser', data.user)
       
     });
+
+    socket.on('escribiendo', (data) => {
+      socket.broadcast.emit('escribiendoRespuesta', data)
+      console.log(data)
+    })
   
     socket.on('disconnectChat', (data) => {
       connectedUSers = connectedUSers.filter( user => user.user !== data.user)

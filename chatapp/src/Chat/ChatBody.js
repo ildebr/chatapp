@@ -4,6 +4,7 @@ import { useNavigate } from "react-router-dom";
 const ChatBody = ({socket}) => {
     const navigate = useNavigate()
     const [messages, setMessages] = useState([]);
+    var cont = 0
 
     const handleLeave = () =>{
         
@@ -27,6 +28,10 @@ const ChatBody = ({socket}) => {
           };
     }, [socket,messages])
 
+    useEffect(()=>{
+        socket.on('escribiendoRespuesta', (data) => console.log(data));
+    },[socket])
+
     const handleToggle = (e) => {
         var ele = document.querySelector('.chat_bar')
         ele.classList.toggle('chat_bar--active')
@@ -42,17 +47,34 @@ const ChatBody = ({socket}) => {
             <div className="chat__body__message__chat__container">
 
                 <div className="hero">
-                    <p>Send a message!</p>
+                    <div className="send-sms">
+                        <p>Send a message!</p>
+                    </div>
                     {
-                        messages.map((message) => {
-                            return <div className={localStorage.getItem('user') == message.name ? 'message sender' : 'message receiver'}>
+                        messages.map((message,i,array) => {
+                            
+                            if(array[i-1]?.user != message.user){
+                                console.log(true, message.text)
+                                return <div data-cont={cont++} className={localStorage.getItem('user') == message.user ? 'message sender' : 'message receiver'}>
                                 <h5 className="message_header">
-                                    {message.name}
+                                    {message.user}
                                 </h5>
                                 <div className="message__content">
                                 {message.text}
                                 </div>
+                                <img className="message__img" src={message.img} />
+                                
                                 </div>
+                            }else {
+                                return <div className={localStorage.getItem('user') == message.user ? 'message sender' : 'message receiver'}>
+                                
+                                <div className="message__content">
+                                {message.text}
+                                </div>
+                                
+                                </div>
+                            }
+                            
                         })
                     }
                 </div>

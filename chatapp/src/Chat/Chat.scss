@@ -190,7 +190,7 @@
         
         color: white;
         z-index: 10;
-        padding-top: calc(50px + 1rem);
+        padding-top: calc(50px + 1rem) 1rem;
 
         h4{
             margin-bottom: 1rem;
@@ -206,6 +206,11 @@
         font-weight: 700;
         // margin-bottom: 1rem;
         padding: 1rem;
+        background: white;
+        color: #404040;
+        border-radius: 5px;
+            box-shadow: inset -1px 5px 5px #cdcdcd;
+            margin-bottom: 1rem;
     }
 
 

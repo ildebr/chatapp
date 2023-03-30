@@ -21,6 +21,7 @@ socketC.on('connection', (socket) => {
     socket.on('message', (data) => {
       console.log('message',data);
       console.log(connectedUSers)
+      data = {...data, time: Date().toString().split(" ")[4]}
       socketC.emit('messageResponse', data);
     });
 

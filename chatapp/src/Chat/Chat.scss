@@ -132,11 +132,21 @@
                 flex-direction: column;
                 display: flex;
 
+                @keyframes smsani {
+                    0%{
+                        opacity: 0;
+                    }
+                    100%{
+                        opacity: 1;
+                    }
+                }
+
                 .message{
                     margin-bottom: .5rem;
                     padding: .75rem;
                     position: relative;
                     border-radius: 13px;
+                    animation: smsani .3s  ease-in;
                     box-shadow: -1px 2px 3px #c7c7c7;
                 }
 

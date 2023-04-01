@@ -13,10 +13,12 @@ const Home = ({socket}) => {
         var radioSelected = radios.filter((r)=>{return r.checked == true})[0].getAttribute('data-img')
         console.log(radioSelected)
         var user = e.target[0].value
+        var room = document.querySelector("[name=room]").value
         localStorage.setItem('user', user)
         localStorage.setItem('img', radioSelected)
+        localStorage.setItem('room', room)
         console.log(e.target[1].value)
-        socket.emit('login', { user:user , socketId: socket.id, img: radioSelected});
+        socket.emit('loginChannel', { user:user, room:room , socketId: socket.id, img: radioSelected});
         navigate('/chat')
     }
 
@@ -55,6 +57,11 @@ const Home = ({socket}) => {
                 
                 <input type="text" name="username" className="username__input" required />
                 <span className="input-placeholder">Usuario</span>
+            </label>
+            <label for="room">
+                
+                <input type="text" name="room" className="username__input" required />
+                <span className="input-placeholder">Room</span>
             </label>
             <div className="radio-buttons">
                 {imgs.map((img,id)=>{

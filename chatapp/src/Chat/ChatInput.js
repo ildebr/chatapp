@@ -10,10 +10,11 @@ const ChatInput = ({socket}) => {
 
 
         if(localStorage.getItem('user')){
-            await socket.emit('message',{
+            await socket.emit('privateMessage',{
                 text: message,
                 user: localStorage.getItem('user'),
                 img: localStorage.getItem('img'),
+                room: localStorage.getItem('room'),
                 id: Math.random()*1000,
                 socketid: socket.id
             })

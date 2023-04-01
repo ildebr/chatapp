@@ -6,11 +6,12 @@ const ChatUsersBar = ({socket}) =>{
 
     useEffect(()=>{
         socket.on('usersList', (data) => setUsersList(data))
-        console.log(usersList)
         usersList.map((user) =>{
             console.log(user.user)
         }) 
     }, [socket, usersList])
+
+    socket.on('coneccion', (data) => console.log('coneccion'))
     const handleToggle = (e) => {
         var ele = document.querySelector('.chat_bar')
         ele.classList.toggle('chat_bar--active')

@@ -25,10 +25,27 @@ socketC.on('connection', (socket) => {
       socketC.emit('messageResponse', data);
     });
 
+    socket.on('privateMessage', (data) => {
+      console.log('message',data);
+      console.log(connectedUSers)
+      data = {...data, time: Date().toString().split(" ")[4]}
+      socketC.to(data.room).emit('messageResponse', data);
+    });
+
     socket.on('login', (data) => {
       connectedUSers.push(data)
       socketC.emit('usersList', connectedUSers)
       socketC.emit('newUser', data.user)
+      
+    });
+
+    socket.on('loginChannel', (data) => {
+      connectedUSers.push(data)
+
+      usersInRoom = connectedUSers.filter((user) => user.room == data.room)
+      console.log(usersInRoom)
+      socket.join(data.room)
+      socketC.to(data.room).emit('usersList', usersInRoom)
       
     });
 

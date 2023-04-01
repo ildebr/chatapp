@@ -21,7 +21,6 @@ const ChatBody = ({socket}) => {
         var hero =document.querySelector('.hero');
 
         hero.scrollTo(0,hero.scrollHeight)
-        console.log(hero)
 
         return function cleanup() {
             socket.removeListener("messageResponse");
@@ -77,6 +76,7 @@ const ChatBody = ({socket}) => {
                                 <div className="message__content">
                                 {message.text}
                                 </div>
+                                <span className="message_time">{message.time}</span>
                                 <img className="message__img" src={message.img} />
                                 
                                 </div>
@@ -85,6 +85,7 @@ const ChatBody = ({socket}) => {
                                 
                                 <div className="message__content">
                                 {message.text}
+                                <span className="message_time">{message.time}</span>
                                 </div>
                                 
                                 </div>

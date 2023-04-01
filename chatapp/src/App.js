@@ -13,8 +13,8 @@ var connectionOptions =  {
   "transports" : ["websocket"]
 };
 
-// const socket = socketIO.connect('https://chat-server-xm1l.onrender.com/', connectionOptions)
-const socket = socketIO.connect('http://localhost:8000/', connectionOptions)
+const socket = socketIO.connect('https://chat-server-xm1l.onrender.com/', connectionOptions)
+// const socket = socketIO.connect('http://localhost:8000/', connectionOptions)
 function App() {
   return (
     
